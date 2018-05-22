@@ -1,9 +1,9 @@
 # Brazillian Jiu-Jitsu Stats Scraper
 
 ### Requirements
-Python 2.6+
-Pip
-BeautifulSoup library
+* Python 2.6+
+* Pip
+* BeautifulSoup library
 
 ### Installing
 ```
