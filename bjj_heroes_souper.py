@@ -1,5 +1,7 @@
 from souper import get_soup
 from bs4 import BeautifulSoup
+from match import Match
+from match_parser import parse_match
 
 def get_fighter_url_exts(index_url):
 	soup = get_soup(index_url)
@@ -17,3 +19,16 @@ def get_fighter_matches_tr(url):
 		return soup.tbody.findAll('tr')
 	else:
 		return []
+
+def get_fighter_matches(url):
+	fighter_matches = []
+
+	for tr in get_fighter_matches_tr(url):
+		fighter_matches.append(parse_match(tr))
+	
+	return fighter_matches
+
+def get_fighter_info(url):
+	soup = get_soup(url)
+	name = soup.h1.string
+	return name
