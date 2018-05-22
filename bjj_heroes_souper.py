@@ -10,7 +10,7 @@ def get_fighter_url_exts(index_url):
 		fighter_url_exts.append(tr.a['href'])
 	return fighter_url_exts
 
-def get_player_matches_tr(url):
+def get_fighter_matches_tr(url):
 	soup = get_soup(url)
 	
 	if (soup.tbody != None):
