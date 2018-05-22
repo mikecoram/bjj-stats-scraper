@@ -1,5 +1,5 @@
 # Brazillian Jiu-Jitsu Stats Scraper
-## Running:
+Running:
 ```
 git clone https://github.com/mikecoram/bjj-stats-scraper.git
 python scraper.py
