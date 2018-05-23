@@ -30,5 +30,5 @@ def get_fighter_matches(url):
 
 def get_fighter_info(url):
 	soup = get_soup(url)
-	name = soup.h1.string
+	name = soup.h1.string.encode('utf-8')
 	return name
