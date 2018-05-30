@@ -5,6 +5,7 @@ from match_parser import parse_match
 
 def get_fighter_url_exts(index_url):
 	soup = get_soup(index_url)
+
 	table_rows = soup.tbody.findAll('tr')
 
 	fighter_url_exts = []
@@ -13,22 +14,35 @@ def get_fighter_url_exts(index_url):
 	return fighter_url_exts
 
 def get_fighter_matches_tr(url):
-	soup = get_soup(url)
+	try:
+		soup = get_soup(url)
+	except:
+		return []
 	
 	if (soup.tbody != None):
 		return soup.tbody.findAll('tr')
 	else:
 		return []
 
-def get_fighter_matches(url):
+def get_fighter_matches(url, fighter_name):
 	fighter_matches = []
 
 	for tr in get_fighter_matches_tr(url):
-		fighter_matches.append(parse_match(tr))
+		fighter_matches.append(parse_match(tr, fighter_name))
 	
 	return fighter_matches
 
 def get_fighter_info(url):
-	soup = get_soup(url)
-	name = soup.h1.string.encode('utf-8')
+	try:
+		soup = get_soup(url)
+	except Exception:
+		return None
+
+	name = ''
+
+	try:
+		name = soup.h1.string.encode('utf-8')
+	except AttributeError:
+		print 'AttributeError'
+
 	return name
